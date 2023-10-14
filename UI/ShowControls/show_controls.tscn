@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bue8u1kcsix7s"]
 
-[ext_resource type="Script" path="res://ShowControls.gd" id="1_weuw7"]
+[ext_resource type="Script" path="res://UI/ShowControls/ShowControls.gd" id="1_153dm"]
 [ext_resource type="Texture2D" uid="uid://d0o2iv7drfgl3" path="res://icon.svg" id="2_n3ylp"]
 
 [node name="ShowControls" type="Control"]
@@ -12,7 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_weuw7")
+script = ExtResource("1_153dm")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
