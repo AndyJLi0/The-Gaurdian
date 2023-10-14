@@ -1,3 +1,3 @@
-# The-Gaurdian
+# The-Guardian
 super cool game fr
-Ailith was here
+\n Ailith was here
