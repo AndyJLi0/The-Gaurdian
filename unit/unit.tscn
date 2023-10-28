@@ -1,29 +1,3 @@
-[gd_scene load_steps=5 format=3 uid="uid://cq4sxru5txvns"]
+[gd_scene format=3 uid="uid://cq4sxru5txvns"]
 
-[ext_resource type="Texture2D" uid="uid://d0o2iv7drfgl3" path="res://icon.svg" id="1_hl3ki"]
-[ext_resource type="Script" path="res://unit/unit.gd" id="1_vbbrr"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_3r4k4"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_hl3ki")
-}],
-"loop": true,
-"name": &"move",
-"speed": 5.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_cxfin"]
-radius = 67.42
-
-[node name="Unit" type="Area2D"]
-script = ExtResource("1_vbbrr")
-metadata/_edit_group_ = true
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_3r4k4")
-animation = &"move"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_cxfin")
+[node name="Sprite2D" type="Sprite2D"]

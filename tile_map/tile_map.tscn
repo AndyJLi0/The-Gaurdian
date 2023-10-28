@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://d0qni0qc5urxp"]
+
+[node name="TileMap" type="TileMap"]
+texture_filter = 1
+cell_quadrant_size = 32
+format = 2
+layer_0/name = "Layer 0"
