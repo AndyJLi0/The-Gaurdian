@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bue8u1kcsix7s"]
 
 [ext_resource type="Script" path="res://UI/ShowControls/ShowControls.gd" id="1_153dm"]
-[ext_resource type="Texture2D" uid="uid://d0o2iv7drfgl3" path="res://icon.svg" id="2_n3ylp"]
+[ext_resource type="Texture2D" uid="uid://d0o2iv7drfgl3" path="res://assets/icon.svg" id="2_n3ylp"]
 
 [node name="ShowControls" type="Control"]
 process_mode = 3
