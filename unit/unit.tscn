@@ -1,3 +1,26 @@
-[gd_scene format=3 uid="uid://cq4sxru5txvns"]
+[gd_scene load_steps=4 format=3 uid="uid://cq4sxru5txvns"]
 
-[node name="Sprite2D" type="Sprite2D"]
+[ext_resource type="Script" path="res://unit/unit.gd" id="1_msggp"]
+[ext_resource type="Texture2D" uid="uid://cge1keqy1di46" path="res://assets/Small Unit Looking Forward.png" id="2_pf0o8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j3hs3"]
+radius = 23.0217
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_msggp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 2)
+shape = SubResource("CircleShape2D_j3hs3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(4.725, 3.925)
+texture = ExtResource("2_pf0o8")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+ignore_rotation = false
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+editor_draw_limits = true

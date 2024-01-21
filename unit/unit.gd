@@ -5,6 +5,9 @@ class_name Unit
 var hp : int = 100
 var agility : int = 1
 
+@export var speed = 700
+
+var target = position
 
 ### IM NOT TOO SURE WHAT THESE _READY AND _PROCESS DO
 
@@ -32,7 +35,6 @@ func move_to_tile(destination: Vector2) -> void:
 	# no animation, unit is 'teleporting'; Vector2(64, 32) is just a placeholder for a tilesize
 	position = destination * Vector2(64, 32)
 
-
 # getter methods
 
 # converting pixel coordinate system to grid coord, CHANGE TILE_SIZE
@@ -45,3 +47,20 @@ func get_hp() -> int:
 	return hp
 func get_agility() -> int:
 	return agility
+	
+	
+# free movement
+func _input(event):
+	if event.is_action_pressed("click"):
+		target = get_global_mouse_position()
+
+func _physics_process(delta):
+	velocity = position.direction_to(target) * speed
+	
+	if isValid(target) && position.distance_to(target) > 10:
+		move_and_slide()
+		
+# haven't finished yet
+func isValid(target) -> bool:  
+	return true;
+	
