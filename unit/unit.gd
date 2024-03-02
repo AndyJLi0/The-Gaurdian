@@ -6,14 +6,35 @@ var hp : int = 100
 var agility : int = 1
 
 @export var speed = 700
-
-var target = position
+@onready var tile_map = $"../TileMap"
+#var target = position
+var astar: AStarGrid2D
+var curr_path: Array[Vector2i]
 
 ### IM NOT TOO SURE WHAT THESE _READY AND _PROCESS DO
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	astar = AStarGrid2D.new()
+	astar.region = tile_map.get_used_rect()
+	astar.cell_size = Vector2(16,16)
+	astar.default_compute_heuristic = AStarGrid2D.HEURISTIC_MANHATTAN
+	astar.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_ONLY_IF_NO_OBSTACLES
+	astar.update()
+	
+	for x in tile_map.get_used_rect().size.x:
+		for y in tile_map.get_used_rect().size.y: 
+			var tile_pos = Vector2i(
+				x + tile_map.get_used_rect().position.x, 
+				y + tile_map.get_used_rect().position.y
+			)
+			
+			var data = tile_map.get_cell_tile_data(0, tile_pos)
+			if data == null or data.get_custom_data("Walk") == true:
+				astar.set_point_solid(tile_pos)
+				
+	
+			# Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -51,16 +72,25 @@ func get_agility() -> int:
 	
 # free movement
 func _input(event):
-	if event.is_action_pressed("click"):
-		target = get_global_mouse_position()
-
-func _physics_process(delta):
-	velocity = position.direction_to(target) * speed
+	if event.is_action_pressed("click") == false:
+		return
+	var id_path = astar.get_id_path(
+		tile_map.local_to_map(global_position),
+		tile_map.local_to_map(get_global_mouse_position())
+	).slice(1)
 	
-	if isValid(target) && position.distance_to(target) > 10:
-		move_and_slide()
+	
+	print(id_path)
+	if id_path.is_empty() == false:
+		curr_path = id_path
 		
-# haven't finished yet
-func isValid(target) -> bool:  
-	return true;
+	#target = get_global_mouse_position()
+func _physics_process(delta):
+	if curr_path.is_empty():
+		return
+	var target_pos = tile_map.map_to_local(curr_path.front())
+	global_position = global_position.move_toward(target_pos, 1)
+	
+	if global_position == target_pos:
+		curr_path.pop_front()
 	
