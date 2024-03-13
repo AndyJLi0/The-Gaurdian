@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cahr438fyral7"]
+[gd_scene load_steps=7 format=3 uid="uid://cahr438fyral7"]
 
 [ext_resource type="PackedScene" uid="uid://bue8u1kcsix7s" path="res://UI/ShowControls/show_controls.tscn" id="1_o113c"]
 [ext_resource type="PackedScene" uid="uid://cq4sxru5txvns" path="res://unit/unit.tscn" id="2_6oorq"]
 [ext_resource type="PackedScene" uid="uid://d0qni0qc5urxp" path="res://tile_map/tile_map.tscn" id="3_mb7bj"]
+[ext_resource type="PackedScene" uid="uid://dut6w1i1136pa" path="res://UI/HUD/HealthBarHUD.tscn" id="2_wmp2m"]
+[ext_resource type="PackedScene" uid="uid://db1clwimooaw5" path="res://UI/HUD/StatusesHUD.tscn" id="3_71n36"]
+[ext_resource type="PackedScene" uid="uid://cu4tfflvkbxfg" path="res://UI/HUD/TooltipHUD.tscn" id="4_4pr4e"]
 
 [node name="World" type="Node2D"]
 
@@ -14,3 +17,22 @@
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_6oorq")]
 position = Vector2(121, 117)
+
+[node name="HealthBarHUD" parent="CanvasLayer" instance=ExtResource("2_wmp2m")]
+
+[node name="HUD" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StatusesHUD" parent="CanvasLayer" instance=ExtResource("3_71n36")]
+offset_left = 7.0
+offset_top = 56.0
+offset_right = -611.0
+offset_bottom = -410.0
+scale = Vector2(0.557325, 0.557325)
+
+[node name="TooltipHUD" parent="CanvasLayer" instance=ExtResource("4_4pr4e")]
+offset_top = 15.0
+offset_bottom = 165.0
