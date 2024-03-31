@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://bue8u1kcsix7s"]
+
+[ext_resource type="Script" path="res://UI/ShowControls/ShowControls.gd" id="1_153dm"]
+[ext_resource type="Texture2D" uid="uid://d0o2iv7drfgl3" path="res://assets/icon.svg" id="2_n3ylp"]
+
+[node name="ShowControls" type="Control"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_153dm")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 60.0
+offset_bottom = 13.0
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control 1" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Control 1"
+
+[node name="Picture" type="TextureRect" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("2_n3ylp")
+expand_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control2" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Control 2"
+
+[node name="Picture" type="TextureRect" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+modulate = Color(0.901961, 0.235294, 0.247059, 1)
+layout_mode = 2
+texture = ExtResource("2_n3ylp")
+expand_mode = 2

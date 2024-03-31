@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1hbo7p7k75kb"]
+
+[ext_resource type="Script" path="res://TurnManager.gd" id="1_rjkvp"]
+[ext_resource type="Texture2D" uid="uid://cge1keqy1di46" path="res://assets/Small Unit Looking Forward.png" id="2_tdn02"]
+
+[node name="TurnManager" type="Node"]
+script = ExtResource("1_rjkvp")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HFlowContainer" type="HFlowContainer" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.0
+offset_right = 48.0
+offset_bottom = 20.0
+grow_horizontal = 2
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/HFlowContainer"]
+self_modulate = Color(0.235294, 1, 1, 1)
+layout_mode = 2
+texture = ExtResource("2_tdn02")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HFlowContainer"]
+layout_mode = 2
+texture = ExtResource("2_tdn02")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/HFlowContainer"]
+self_modulate = Color(1, 1, 0.317647, 1)
+layout_mode = 2
+texture = ExtResource("2_tdn02")
+
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/HFlowContainer"]
+self_modulate = Color(1, 0.682353, 1, 1)
+layout_mode = 2
+texture = ExtResource("2_tdn02")

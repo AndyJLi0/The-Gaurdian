@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://dklrkiyidjfd0"]
+
+[ext_resource type="PackedScene" uid="uid://bue8u1kcsix7s" path="res://UI/ShowControls/show_controls.tscn" id="1_dn4ho"]
+[ext_resource type="PackedScene" uid="uid://dut6w1i1136pa" path="res://UI/HUD/HealthBarHUD.tscn" id="2_4fpd5"]
+[ext_resource type="PackedScene" uid="uid://db1clwimooaw5" path="res://UI/HUD/StatusesHUD.tscn" id="3_qhysq"]
+[ext_resource type="PackedScene" uid="uid://cu4tfflvkbxfg" path="res://UI/HUD/TooltipHUD.tscn" id="4_h6xg7"]
+
+[node name="HUD" type="CanvasLayer"]
+scale = Vector2(0.5, 0.5)
+transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
+
+[node name="ShowControls" parent="." instance=ExtResource("1_dn4ho")]
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthBarHUD" parent="." instance=ExtResource("2_4fpd5")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 92.0
+offset_right = 16.0
+offset_bottom = 92.0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+
+[node name="StatusesHUD" parent="." instance=ExtResource("3_qhysq")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 124.0
+offset_right = 16.0
+offset_bottom = 124.0
+grow_vertical = 0
+scale = Vector2(0.25, 0.25)
+
+[node name="TooltipHUD" parent="." instance=ExtResource("4_h6xg7")]
+anchors_preset = 7
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 92.0
+offset_right = 316.0
+offset_bottom = 242.0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
