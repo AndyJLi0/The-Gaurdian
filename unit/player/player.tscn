@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://b67uv5ud0mf2b"]
+
+[ext_resource type="Script" path="res://unit/player/player.gd" id="1_8jigq"]
+[ext_resource type="Texture2D" uid="uid://dlrxqlsmqmjfu" path="res://assets/Game_design_character_adventurer.png" id="2_qnsyt"]
+[ext_resource type="PackedScene" uid="uid://dklrkiyidjfd0" path="res://UI/hud.tscn" id="3_vnov5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8aege"]
+radius = 7.61577
+
+[node name="Player" type="CharacterBody2D" groups=["player", "unit"]]
+position = Vector2(160, 90)
+script = ExtResource("1_8jigq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-5.4375, -0.948242)
+scale = Vector2(0.0124264, 0.0109405)
+texture = ExtResource("2_qnsyt")
+hframes = 3
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.3
+drag_top_margin = 0.3
+drag_right_margin = 0.3
+drag_bottom_margin = 0.3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8aege")
+
+[node name="HUD" parent="." instance=ExtResource("3_vnov5")]

@@ -2,8 +2,12 @@ extends CharacterBody2D
 
 class_name Unit
 
+var maxHp : int = 100
 var hp : int = 100
 var agility : int = 1
+var attackDamage: int = 1
+
+var isTakingTurn: bool = false
 
 @export var speed = 700
 @onready var tile_map = $"../TileMap"
@@ -51,12 +55,24 @@ func set_hp(new_hp: int) -> void:
 func set_agility(new_agility: int) -> void:
 	agility = new_agility
 	
-# moves unit to destination. Assumes the destination is valid based on agility/pos from TurnManager?
-func move_to_tile(destination: Vector2) -> void:
-	# no animation, unit is 'teleporting'; Vector2(64, 32) is just a placeholder for a tilesize
-	position = destination * Vector2(64, 32)
-
 # getter methods
+func get_hp() -> int:
+	return hp
+func get_agility() -> int:
+	return agility
+	
+	
+# moves unit to destination. Assumes the destination is valid based on agility/pos from TurnManager?
+func move_to_destination(destination: Vector2) -> void:
+	var id_path = astar.get_id_path(
+		tile_map.local_to_map(global_position),
+		tile_map.local_to_map(destination)
+	).slice(1)
+	
+	
+	print(id_path)
+	if id_path.is_empty() == false:
+		curr_path = id_path
 
 # converting pixel coordinate system to grid coord, CHANGE TILE_SIZE
 func get_curent_tile() -> Vector2:
@@ -64,25 +80,22 @@ func get_curent_tile() -> Vector2:
 	var grid_position : Vector2 = position / tile_size
 	return Vector2(floor(grid_position.x), floor(grid_position.y))
 	
-func get_hp() -> int:
-	return hp
-func get_agility() -> int:
-	return agility
 	
 	
 # free movement
 func _input(event):
-	if event.is_action_pressed("click") == false:
-		return
-	var id_path = astar.get_id_path(
-		tile_map.local_to_map(global_position),
-		tile_map.local_to_map(get_global_mouse_position())
-	).slice(1)
-	
-	
-	print(id_path)
-	if id_path.is_empty() == false:
-		curr_path = id_path
+	if isTakingTurn:
+		if event.is_action_pressed("click") == false:
+			return
+		var id_path = astar.get_id_path(
+			tile_map.local_to_map(global_position),
+			tile_map.local_to_map(get_global_mouse_position())
+		).slice(1)
+		
+		
+		print(id_path)
+		if id_path.is_empty() == false:
+			curr_path = id_path
 		
 	#target = get_global_mouse_position()
 func _physics_process(delta):

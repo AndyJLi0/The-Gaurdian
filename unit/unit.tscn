@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_j3hs3"]
 radius = 7.61577
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["unit"]]
 script = ExtResource("1_msggp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

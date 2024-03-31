@@ -1,5 +1,7 @@
 extends Control
 
+class_name HealthBarHud
+
 @onready var healthBarLabel = $Label
 @onready var healthBar = $ProgressBar
 
@@ -8,12 +10,12 @@ var health = 100;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	ready_test()
+#	ready_test()
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	process_test()
+#	process_test()
 	pass
 	
 # Test functions below, can remove later. 
